@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <style>
+        #con{
+            flex-wrap: wrap;
+        }
+        a{
+            text-decoration: none;
+            font-size: 30px;
+            color: yellowgreen;     
+        }
+    </style>
+</head>
+<body>
+    <div><a href="backend.html">Backend</a></div>
+    <div id="hh"></div>
+    <div id="con"></div>
+</body>
+</html>
+
+<script>
+     var heading=document.createElement("h1");
+    heading.innerText="Strategic Investors";
+    heading.style.textAlign="center";
+    heading.style.marginTop="60px"
+    heading.style.fontSize="40px"
+
+    document.querySelector("#hh").append(heading);
+
+
+    var investorarr=JSON.parse(localStorage.getItem("investorsData"));
+
+    investorarr.forEach(function(el){
+
+        var box=document.createElement("div");
+        // box.style.border="1px solid red";
+        box.style.paddingLeft="20px"
+        // box.style.margin="auto"
+        box.style.marginTop="20px"
+
+        var img=document.createElement("img");
+        img.setAttribute("src", el.imgurl)
+        img.style.borderTopRightRadius="8px";
+        img.style.borderTopLeftRadius="8px";
+
+        var h3=document.createElement("h3");
+        h3.innerText=el.name;
+        h3.style.textAlign="center"
+        h3.style.fontSize="26px";
+        h3.style.marginTop="8px"
+
+        var p=document.createElement("p");
+        p.innerText=el.role;
+        p.style.textAlign="center"
+        p.style.marginTop="-15px"
+
+        var company=document.createElement("img");
+        company.setAttribute("src", el.logo);
+        company.style.height="50px"
+        company.style.marginLeft="80px"
+
+        box.append(img,h3,p,company)
+        // console.log(box)
+        document.querySelector("#con").append(box);
+        document.querySelector("#con").style.display="flex";
+        document.querySelector("#con").style.marginLeft="145px"
+
+    })
+</script>

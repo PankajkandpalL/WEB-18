@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <style>
+        body>div{
+            background-color: blue;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        a{
+            text-decoration: none;
+            font-size: 30px;
+            color: yellowgreen;     
+        }
+        #form{
+            margin-top: 30px;
+            margin-left: 40px;
+            /* background-color: grey; */
+        }
+        label{
+            font-size: 20px;
+        }
+        input{
+            width: 300px;
+            height: auto;
+            padding: 5px;
+        }
+        #form>input:last-child{
+            width: 100px;
+            margin-left: 95px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+    <form id="form">
+        <label for="">Name</label>
+        <br>
+        <input id="nam" type="text" placeholder="Your Name">
+        <br><br>
+        <label for="">IMAGE LINK</label>
+        <br>
+        <input id="imgurl" type="text" placeholder="GIve imgurl here">
+        <br><br>
+        <label for="">COMPANY LOGO LINK</label>
+        <br>
+        <input id="logolink" type="text" placeholder="give logo link here">
+        <br><br>
+        <label for="">ROLE</label>
+        <br>
+        <input id="role" type="text" placeholder="Give His/her POsition Here">
+        <br><br>
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+</html>
+
+<script>
+    document.querySelector("#form").addEventListener("submit", transfer);
+
+   
+    var arr=JSON.parse(localStorage.getItem("investorsData"))||[];
+
+    function transfer(){
+        event.preventDefault();
+   
+        var objdata={
+            name:form.nam.value,
+            imgurl:form.imgurl.value,
+            logo:form.logolink.value,
+            role:form.role.value
+        }   
+        
+        arr.push(objdata);
+        localStorage.setItem("investorsData", JSON.stringify(arr))
+    }
+</script>
