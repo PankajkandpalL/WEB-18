@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign_Up</title>
+    <style>
+        #form{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding-left: 20px;
+            border-radius: 8px;
+            width: 500px;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        #sign{
+            text-align: center;
+            font-size: 18px;
+            /* display: flex; */
+            /* margin-top: 10px; */
+        }
+        input{
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 5px;
+            border: 1px solid grey;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <label for="" id="sign">Sign Up</label><br><br><br>
+        <label for="">Full Name</label><br>
+        <input type="text" id="name" placeholder="Type Your Name"><br><br>
+        <label for="">Email</label><br>
+        <input type="email" id="email" placeholder="example@masai.com"><br><br>
+        <label for="">Password</label><br>
+        <input type="password" id="password" placeholder="Enter Password"><br><br><br>
+        <input type="submit" value="SIGN UP">
+    </form>
+</body>
+</html>
+
+<script>
+    document.querySelector("#form").addEventListener("submit",login)
+
+
+    function login(){
+        event.preventDefault();
+
+        var arr=JSON.parse(localStorage.getItem("signupdata"))||[];
+        
+        var obj={
+            email:form.email.value,
+            pass:form.password.value,
+        }
+
+        arr.push(obj);
+        // console.log(arr)
+
+        localStorage.setItem("signupdata", JSON.stringify(arr))
+
+
+
+        var box=document.createElement("div");
+        // box.style.marginBottom="20px"
+        box.style.margin="auto"
+        box.style.width="35%"
+        box.style.borderRadius="8px"
+        box.style.display="flex"
+        box.style.justifyContent="center"
+        box.style.alignItems="center"
+        box.style.padding="15px"
+        box.style.boxShadow="rgba(0, 0, 0, 0.56) 0px 22px 70px 4px"
+
+
+        var p=document.createElement("p");
+        p.innerText="You Are Successfully Signed Up. Click Here To login!";
+        box.append(p);
+
+        var a=document.createElement("a");
+        a.setAttribute("href", "logiin.html")
+        a.innerText="LOGIN"
+        box.append(a);
+
+        document.querySelector("body").append(box);
+ 
+        
+    }
+
+
+
+</script>
